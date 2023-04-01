@@ -8,7 +8,8 @@ RUN apt-get install wget curl unzip software-properties-common gnupg2 -y
     && apt-get install terraform -y
 
 #Install Ansible
-RUN apt install ansible
+RUN apt-get install ansible
+RUN echo "OUTPUT"
 
 ### Review here
 
