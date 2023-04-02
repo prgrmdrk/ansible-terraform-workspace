@@ -10,8 +10,21 @@ RUN apt-get install wget curl unzip software-properties-common gnupg2 -y \
     && apt-get install terraform -y
 
 #Install Ansible
-RUN apt-get install ansible -y
-RUN echo "OUTPUT"
+RUN echo "------------------------------------------------------ ansible-lint" \
+    && apt-get install ansible -y \
+    && pip install cffi \
+    && echo "------------------------------------------------------ ansible-ara" \
+    && pipx install ara \
+    && echo "------------------------------------------------------ ansible-lint" \
+    && pipx install "ansible-lint[yamllint]" \
+    && echo "------------------------------------------------------ ansible-doctor" \
+    && pipx install ansible-doctor \
+    && echo "------------------------------------------------------ ansible-playbook-grapher" \
+    && pipx install ansible-playbook-grapher \
+    && echo "------------------------------------------------------ ansible-inventory-grapher" \
+    && pipx install ansible-inventory-grapher \
+    && echo "------------------------------------------------------ ansible-cmdb" \
+    && pipx install ansible-cmdb
 
 ### Review here
 
