@@ -19,10 +19,9 @@ RUN apt-get install ansible pip python3-venv -y \
 RUN pipx install ansible-playbook-grapher
 RUN pipx install ansible-inventory-grapher
 RUN pipx install ansible-cmdb
-RUN pipx ensurepath
-
 RUN apt-get install -y graphviz \
     && pipx install blastradius==0.1.23 
+RUN pipx ensurepath
     
     
 #    && echo "------------------------------------------------------ terraform-docs" \
