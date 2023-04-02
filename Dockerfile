@@ -11,20 +11,23 @@ RUN apt-get install wget curl unzip software-properties-common gnupg2 -y \
 
 #Install Ansible
 RUN echo "------------------------------------------------------ ansible-lint" \
-    && apt-get install ansible pipx python3-venv -y \
-    && pipx install cffi \
-    && echo "------------------------------------------------------ ansible-ara" \
+    && apt-get install ansible pip python3-venv -y \
+    && pip install pipx \
+    && pip install cffi \
+RUN echo "------------------------------------------------------ ansible-ara" \
     && pipx install ara \
-    && echo "------------------------------------------------------ ansible-lint" \
+RUN echo "------------------------------------------------------ ansible-lint" \
     && pipx install "ansible-lint[yamllint]" \
-    && echo "------------------------------------------------------ ansible-doctor" \
+RUN echo "------------------------------------------------------ ansible-doctor" \
     && pipx install ansible-doctor \
-    && echo "------------------------------------------------------ ansible-playbook-grapher" \
+RUN echo "------------------------------------------------------ ansible-playbook-grapher" \
     && pipx install ansible-playbook-grapher \
-    && echo "------------------------------------------------------ ansible-inventory-grapher" \
+RUN echo "------------------------------------------------------ ansible-inventory-grapher" \
     && pipx install ansible-inventory-grapher \
-    && echo "------------------------------------------------------ ansible-cmdb" \
-    && pipx install ansible-cmdb
+RUN echo "------------------------------------------------------ ansible-cmdb" \
+    && pipx install ansible-cmdb \
+RUN echo "------------------------------------------------------ pipx ensurepath" \
+    && pipx ensurepath
 
 ### Review here
 
