@@ -10,24 +10,52 @@ RUN apt-get install wget curl unzip software-properties-common gnupg2 -y \
     && apt-get install terraform -y
 
 #Install Ansible
-RUN echo "------------------------------------------------------ ansible-lint" \
-    && apt-get install ansible pip python3-venv -y \
+RUN apt-get install ansible pip python3-venv -y \
     && pip install pipx \
     && pip install cffi \
-RUN echo "------------------------------------------------------ ansible-ara" \
     && pipx install ara \
-RUN echo "------------------------------------------------------ ansible-lint" \
     && pipx install "ansible-lint[yamllint]" \
-RUN echo "------------------------------------------------------ ansible-doctor" \
-    && pipx install ansible-doctor \
-RUN echo "------------------------------------------------------ ansible-playbook-grapher" \
-    && pipx install ansible-playbook-grapher \
-RUN echo "------------------------------------------------------ ansible-inventory-grapher" \
-    && pipx install ansible-inventory-grapher \
-RUN echo "------------------------------------------------------ ansible-cmdb" \
-    && pipx install ansible-cmdb \
-RUN echo "------------------------------------------------------ pipx ensurepath" \
-    && pipx ensurepath
+    && pipx install ansible-doctor
+RUN pipx install ansible-playbook-grapher
+RUN pipx install ansible-inventory-grapher
+RUN pipx install ansible-cmdb
+RUN pipx ensurepath
+
+RUN apt-get install -y graphviz \
+    && pipx install blastradius==0.1.23 
+    
+    
+#    && echo "------------------------------------------------------ terraform-docs" \
+#    && cd /tmp && curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.15.0/terraform-docs-v0.15.0-linux-amd64.tar.gz \
+#    && tar -xzf terraform-docs.tar.gz \
+#    && chmod +x terraform-docs \
+#    && mv /tmp/terraform-docs /home/abc/.local/bin/terraform-docs \
+#    && rm /tmp/terraform-docs.tar.gz \
+#    && echo "------------------------------------------------------ tflint" \
+#    && cd /tmp && wget https://github.com/terraform-linters/tflint/releases/download/v0.39.3/tflint_linux_amd64.zip \
+#    && unzip /tmp/tflint_linux_amd64.zip -d /home/abc/.local/bin \
+#    && rm /tmp/tflint_linux_amd64.zip \
+#    && echo "------------------------------------------------------ tfsec" \
+#    && cd /tmp && curl -Lo /tmp/tfsec https://github.com/aquasecurity/tfsec/releases/download/v1.27.5/tfsec-checkgen-linux-amd64 \
+#    && chmod +x /tmp/tfsec \
+#    && mv /tmp/tfsec /home/abc/.local/bin/tfsec \
+#    && echo "------------------------------------------------------ terrascan" \
+#    && cd /tmp && curl -Lo ./terrascan.tar.gz https://github.com/tenable/terrascan/releases/download/v1.15.2/terrascan_1.15.2_Linux_x86_64.tar.gz \
+#    && tar -xf terrascan.tar.gz terrascan && rm terrascan.tar.gz \
+#    && install terrascan /home/abc/.local/bin && rm /tmp/terrascan \
+#    && echo "------------------------------------------------------ terraform inframap" \
+#    && cd /tmp && curl -Lo ./terraform-inframap.tar.gz https://github.com/cycloidio/inframap/releases/download/v0.6.7/inframap-linux-amd64.tar.gz \
+#    && tar -xzf terraform-inframap.tar.gz && rm terraform-inframap.tar.gz \
+#    && chmod +x inframap-linux-amd64 \
+#    && mv inframap-linux-amd64 /home/abc/.local/bin/inframap \
+#    && echo "------------------------------------------------------ terraform rover" \
+#    && cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/im2nguyen/rover/releases/download/v0.3.3/rover_0.3.3_linux_amd64.zip \
+#    && unzip /tmp/terraform-rover.zip -d /tmp/rover && rm /tmp/terraform-rover.zip  \
+#    && mv /tmp/rover/rover_v0.3.3 /tmp/rover/rover \
+#    && chmod +x /tmp/rover/rover \
+#    && mv /tmp/rover/rover /home/abc/.local/bin/rover \
+#    && rm -rf /tmp/rover
+
 
 ### Review here
 
