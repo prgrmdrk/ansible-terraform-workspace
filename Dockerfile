@@ -12,7 +12,7 @@ RUN apt-get install wget curl unzip software-properties-common gnupg2 -y \
 #Install Ansible
 RUN echo "------------------------------------------------------ ansible-lint" \
     && apt-get install ansible -y \
-    && pip install cffi \
+    && pipx install cffi \
     && echo "------------------------------------------------------ ansible-ara" \
     && pipx install ara \
     && echo "------------------------------------------------------ ansible-lint" \
